@@ -12,15 +12,21 @@ import './App.css';
 import Edit from "./components/edit";
 import {Navbar} from "./components/navbar";
 
+//TODO create dedicated service layer
+//TODO refactor router for get news and allnews
+//TODO create single generic configuration file for name and table structure
+//TODO fix creation and editing UI styles
+//TODO use docker container instead of mongoDB atlas
+//TODO differentiate form for type of properties (images, arrays, radios,...)
+//TODO create generic testing for client and server through jest/react-testing-library
+
 function App() {
   return (
       <div>
           <Router>
         <Navbar />
         <Switch>
-        <Route exact path="/">
-          <RecordList />
-        </Route>
+        <Route exact path="/" component={RecordList} />
         <Route path="/create" component={Create} />
           <Route path="/edit/:id" component={Edit} />
         </Switch>
