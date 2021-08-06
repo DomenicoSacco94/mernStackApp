@@ -10,20 +10,19 @@ const recordRoutes = express.Router();
 //This will help us connect to the database
 const dbo = require("../db/conn");
 
-const dbName = "Cluster0"
+const {collectionName, dbName, recordName} = require("../../../client/src/config/dbConfig.json")
 
-const recordName = "news"
+const defaultData = require("../../../client/src/config/models/data")
 
-const collectionName = "newsCollection"
+const properties =  Object.keys(defaultData);
 
-const dataStructure = (req) => ({
-    creation_date: req.body.creation_date,
-    modification_date: req.body.modification_date,
-    title : req.body.title,
-    content: req.body.content,
-    image: req.body.image,
-    categories: req.body.categories
-});
+const dataStructure = (req) => {
+    const dataStructure = {}
+    properties.forEach(
+        property=> Object.assign(dataStructure,{[property]: req.body[property]})
+    )
+    return dataStructure
+}
 
 
 recordRoutes.route(`/${recordName}/:id`).get(function (req, res) {
@@ -74,7 +73,7 @@ recordRoutes.route(`/${recordName}/update/:id`).post(function (req, res) {
 });
 
 // This section will help you delete a record
-recordRoutes.route("/:id").delete((req, res) => {
+recordRoutes.route(`/${recordName}/:id`).delete((req, res) => {
     let db_connect = dbo.getDb(dbName);
     var myquery = { id: req.body.id };
     db_connect.collection(collectionName).deleteOne(myquery, function (err, obj) {

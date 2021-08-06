@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import { defaultData, properties, recordName } from "../models/data";
+import defaultData from "../config/models/data";
 import { withRouter } from "react-router";
 import { retrieveRecord, updateRecord } from "../services/recordService";
+import { recordName } from "../config/dbConfig.json";
+
+const properties =  Object.keys(defaultData);
 
 class Edit extends Component {
   // This is the constructor that stores the data.
@@ -36,9 +39,7 @@ class Edit extends Component {
     // When post request is sent to the create url, axios will add a new record(newperson) to the database.
     const editedData = this.state;
 
-    updateRecord(this.props.match.params.id, editedData).then((res) =>
-      console.log(res.data)
-    );
+    updateRecord(this.props.match.params.id, editedData)
 
     this.props.history.push("/");
   }

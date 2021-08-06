@@ -1,5 +1,5 @@
 import axios from "axios";
-import { recordName } from "../models/data";
+import { recordName } from "../config/dbConfig.json";
 
 export const createRecord = async (newData) => {
   return await axios
@@ -20,7 +20,7 @@ export const retrieveRecord = (id) => {
 
 export const deleteRecord = (id) => {
   return axios
-    .delete("http://localhost:3000/" + id)
+    .delete(`http://localhost:3000/${recordName}/${id}`)
     .then((response) => {
       console.log(response.data);
     })

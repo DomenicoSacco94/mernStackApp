@@ -8,10 +8,7 @@ import "./App.css";
 import Edit from "./components/edit";
 import { Navbar } from "./components/navbar";
 
-//TODO use linter
-//TODO refactor router for get news and allnews
-
-//TODO create single generic configuration file for name and table structure
+//TODO fix lack of update in redirect
 //TODO fix creation and editing UI styles
 //TODO use docker container instead of mongoDB atlas
 //TODO differentiate form for type of properties (images, arrays, radios,...)

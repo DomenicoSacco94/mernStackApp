@@ -1,0 +1,5 @@
+{
+    "recordName" : "news",
+    "dbName": "Cluster0",
+    "collectionName": "newsCollection"
+}

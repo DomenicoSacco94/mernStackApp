@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { properties } from "../models/data";
+import defaultData from "../config/models/data";
 import { deleteRecord, retrieveRecords } from "../services/recordService";
+
+const properties =  Object.keys(defaultData);
 
 const Record = (props) => (
   <tr>
