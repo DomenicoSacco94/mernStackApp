@@ -13,7 +13,9 @@ import Edit from "./components/edit";
 import {Navbar} from "./components/navbar";
 
 //TODO create dedicated service layer
+//TODO use linter
 //TODO refactor router for get news and allnews
+
 //TODO create single generic configuration file for name and table structure
 //TODO fix creation and editing UI styles
 //TODO use docker container instead of mongoDB atlas

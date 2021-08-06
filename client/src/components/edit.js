@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-// This will require to npm install axios
-import axios from 'axios';
-import {defaultData, properties} from "../models/data";
+import {defaultData, properties, recordName} from "../models/data";
 import {withRouter} from "react-router";
-const recordName="news"
+import {retrieveRecord, updateRecord} from "../services/recordService";
 
 class Edit extends Component {
     // This is the constructor that stores the data.
@@ -17,14 +15,10 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        axios
-            .get(`http://localhost:3000/${recordName}/${this.props.match.params.id}`)
+        retrieveRecord(this.props.match.params.id)
             .then((response) => {
-                this.setState(response.data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+            this.setState(response.data);
+        })
     }
 
     onChangeProperty(propertyName) {
@@ -42,11 +36,9 @@ class Edit extends Component {
         // When post request is sent to the create url, axios will add a new record(newperson) to the database.
         const editedData = this.state
 
-        axios
-            .post(`http://localhost:3000/${recordName}/update/${this.props.match.params.id}`, editedData)
-            .then((res) => console.log(res.data));
+        updateRecord(this.props.match.params.id, editedData)
 
-        this.props.history.push("/");
+        this.props.history.push("/")
     }
 
 

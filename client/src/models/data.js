@@ -7,4 +7,6 @@ export const defaultData = {
     categories: ""
 }
 
+export const recordName = "news"
+
 export const properties = Object.keys(defaultData)

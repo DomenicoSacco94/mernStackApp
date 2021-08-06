@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-// This will require to npm install axios
-import axios from 'axios';
 import { Link } from "react-router-dom";
 import {properties} from "../models/data";
-
-const recordName = "news"
+import {deleteRecord, retrieveRecords} from "../services/recordService";
 
 const Record = (props) => (
     <tr>
@@ -35,22 +32,17 @@ export default class RecordList extends Component {
 
     // This method will get the data from the database.
     componentDidMount() {
-        axios
-            .get(`http://localhost:3000/${recordName}/`)
+            retrieveRecords()
             .then((response) => {
                 this.setState({ records: response.data });
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+
     }
 
     // This method will delete a record based on the method
     deleteRecord(id) {
-        console.log(id)
-        axios.delete("http://localhost:3000/" + id).then((response) => {
-            console.log(response.data);
-        });
+
+        deleteRecord(id)
 
         this.setState({
             record: this.state.records.filter((el) => el._id !== id),

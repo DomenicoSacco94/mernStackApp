@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-// This will require to npm install axios
-import axios from 'axios';
-import {defaultData, properties} from "../models/data";
+import {defaultData, properties, recordName} from "../models/data";
 import {withRouter} from "react-router";
-
-const recordName="news"
+import {createRecord} from "../services/recordService";
 
 class Create extends Component {
     // This is the constructor that stores the data.
@@ -32,12 +29,7 @@ class Create extends Component {
         // When post request is sent to the create url, axios will add a new record(newperson) to the database.
         const newData = this.state
 
-        axios
-            .post(`http://localhost:3000/${recordName}/add`, newData)
-            .then((res) => console.log(res.data));
-
-        // We will empty the state after posting the data to the database
-        this.setState(defaultData);
+        createRecord(newData)
 
         this.props.history.push("/");
     }
