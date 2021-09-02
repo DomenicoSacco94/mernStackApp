@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import defaultData from "../config/models/data";
 import { deleteRecord, retrieveRecords } from "../services/recordService";
 
-const properties =  Object.keys(defaultData);
+const properties = Object.keys(defaultData);
 
 const Record = (props) => (
   <tr>
@@ -41,10 +41,11 @@ export default class RecordList extends Component {
 
   // This method will delete a record based on the method
   deleteRecord(id) {
-    deleteRecord(id).then(res=> this.setState({
-      record: this.state.records.filter((el) => el._id !== id),
-    }));
-
+    deleteRecord(id).then((res) =>
+      this.setState({
+        record: this.state.records.filter((el) => el._id !== id),
+      })
+    );
   }
 
   // This method will map out the users on the table

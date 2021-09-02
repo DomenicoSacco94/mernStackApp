@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 import { retrieveRecord, updateRecord } from "../services/recordService";
 import { recordName } from "../config/dbConfig.json";
 
-const properties =  Object.keys(defaultData);
+const properties = Object.keys(defaultData);
 
 class Edit extends Component {
   // This is the constructor that stores the data.
@@ -39,10 +39,9 @@ class Edit extends Component {
     // When post request is sent to the create url, axios will add a new record(new) to the database.
     const editedData = this.state;
 
-    updateRecord(this.props.match.params.id, editedData).then(res => {
+    updateRecord(this.props.match.params.id, editedData).then((res) => {
       return this.props.history.push("/");
-    })
-
+    });
   }
 
   // This following section will display the form that takes the input from the user.
