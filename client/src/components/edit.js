@@ -19,7 +19,8 @@ class Edit extends Component {
 
   componentDidMount() {
     retrieveRecord(this.props.match.params.id).then((response) => {
-      this.setState(response.data);
+      const data = response?.data? response.data : {error: true}
+      this.setState(data);
     });
   }
 
@@ -46,7 +47,7 @@ class Edit extends Component {
 
   // This following section will display the form that takes the input from the user.
   render() {
-    if (this.state) {
+    if (this.state && !this.state.error) {
       return (
         <div style={{ marginTop: 20 }}>
           <h3>{`Update ${recordName.toUpperCase()}`}</h3>
@@ -73,7 +74,7 @@ class Edit extends Component {
         </div>
       );
     } else {
-      return null;
+      return <div> Object Not Found </div>;
     }
   }
 }
