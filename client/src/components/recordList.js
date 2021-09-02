@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import defaultData from "../config/models/data";
 import { deleteRecord, retrieveRecords } from "../services/recordService";
-
-const properties = Object.keys(defaultData);
+import { dataFields } from "../config/models/dataSchema";
 
 const Record = (props) => (
   <tr>
-    {properties.map((property) => (
+    {dataFields.map((property) => (
       <td key={property}>{props.record[property]}</td>
     ))}
     <td>
-      <Link to={"/edit/" + props.record._id}>Edit</Link> |
+      <Link to={"/editSchema/" + props.record._id}>Edit</Link> |
       <a
         href="/"
         onClick={() => {
@@ -69,7 +67,7 @@ export default class RecordList extends Component {
         <table className="table table-striped" style={{ marginTop: 20 }}>
           <thead>
             <tr>
-              {properties.map((property) => (
+              {dataFields.map((property) => (
                 <th key={property}>{property}</th>
               ))}
             </tr>

@@ -1,3 +1,5 @@
+const struct = require("../../../client/src/config/models/dataSchema");
+
 const ObjectId = require("mongodb").ObjectId;
 
 const express = require("express");
@@ -16,9 +18,7 @@ const {
   recordName,
 } = require("../../../client/src/config/dbConfig.json");
 
-const defaultData = require("../../../client/src/config/models/data");
-
-const properties = Object.keys(defaultData);
+const properties = struct.dataFields;
 
 const dataStructure = (req) => {
   const dataStructure = {};
