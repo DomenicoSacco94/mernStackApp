@@ -36,17 +36,15 @@ export default class RecordList extends Component {
   componentDidMount() {
     retrieveRecords().then((response) => {
       this.setState({ records: response.data });
-      console.log(response.data);
     });
   }
 
   // This method will delete a record based on the method
   deleteRecord(id) {
-    deleteRecord(id).then((res) => console.log(res.data));
-
-    this.setState({
+    deleteRecord(id).then(res=> this.setState({
       record: this.state.records.filter((el) => el._id !== id),
-    });
+    }));
+
   }
 
   // This method will map out the users on the table

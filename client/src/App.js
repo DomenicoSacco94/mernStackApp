@@ -8,7 +8,6 @@ import "./App.css";
 import Edit from "./components/edit";
 import { Navbar } from "./components/navbar";
 
-//TODO fix lack of update in redirect
 //TODO fix creation and editing UI styles
 //TODO use docker container instead of mongoDB atlas
 //TODO differentiate form for type of properties (images, arrays, radios,...)

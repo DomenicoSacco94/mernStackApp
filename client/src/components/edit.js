@@ -36,12 +36,13 @@ class Edit extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    // When post request is sent to the create url, axios will add a new record(newperson) to the database.
+    // When post request is sent to the create url, axios will add a new record(new) to the database.
     const editedData = this.state;
 
-    updateRecord(this.props.match.params.id, editedData)
+    updateRecord(this.props.match.params.id, editedData).then(res => {
+      return this.props.history.push("/");
+    })
 
-    this.props.history.push("/");
   }
 
   // This following section will display the form that takes the input from the user.

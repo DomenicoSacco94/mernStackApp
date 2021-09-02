@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import defaultData from "../config/models/data.json";
 import { withRouter } from "react-router";
-import { createRecord } from "../services/recordService";
+import {createRecord} from "../services/recordService";
 import { recordName } from "../config/dbConfig.json";
 
 const properties =  Object.keys(defaultData);
@@ -33,9 +33,10 @@ class Create extends Component {
     // When post request is sent to the create url, axios will add a new record(newperson) to the database.
     const newData = this.state;
 
-    createRecord(newData)
+    createRecord(newData).then(res => {
+      this.props.history.push("/");
+    })
 
-    this.props.history.push("/");
   }
 
   // This following section will display the form that takes the input from the user.

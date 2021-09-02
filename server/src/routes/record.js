@@ -52,9 +52,12 @@ recordRoutes.route(`/${recordName}`).get(function (req, res) {
 recordRoutes.route(`/${recordName}/add`).post(function (req, res) {
     let db_connect = dbo.getDb(dbName);
     let myobj = dataStructure(req);
-    db_connect.collection(collectionName).insertOne(myobj, function (err, res) {
+    db_connect.collection(collectionName).insertOne(myobj, function (err, obj) {
         if (err) throw err;
+        res.json(obj);
     });
+    console.log("1 document created");
+    return res;
 });
 
 // This section will help you update a record by id.
@@ -66,20 +69,25 @@ recordRoutes.route(`/${recordName}/update/:id`).post(function (req, res) {
     };
     db_connect
         .collection(collectionName)
-        .updateOne(myquery, newvalues, function (err, res) {
+        .updateOne(myquery, newvalues, function (err, obj) {
             if (err) throw err;
-            console.log("1 document updated");
+            res.json(obj);
         });
+    console.log("1 document updated");
+    return res;
 });
 
 // This section will help you delete a record
 recordRoutes.route(`/${recordName}/:id`).delete((req, res) => {
     let db_connect = dbo.getDb(dbName);
-    var myquery = { id: req.body.id };
-    db_connect.collection(collectionName).deleteOne(myquery, function (err, obj) {
+    const myquery = { _id: new ObjectId(req.params.id) };
+    db_connect.collection(collectionName
+    ).deleteOne(myquery, function (err, obj) {
         if (err) throw err;
-        console.log("1 document deleted");
+        res.json(obj);
     });
+    console.log("1 document deleted");
+    return res;
 });
 
 module.exports = recordRoutes;
