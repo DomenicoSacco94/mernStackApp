@@ -8,10 +8,12 @@ import { Navbar } from "./components/navbar";
 import CreateSchema from "./components/createSchema";
 import EditSchema from "./components/editSchema";
 
+//TODO merge create and save components
+//TODO enter json:ui
+//TODO repackage to each docker container
+//TODO adapt for more entities
 //TODO fix creation and editing UI styles through ant design
 //TODO add proper logging
-//TODO use docker container instead of mongoDB atlas
-//TODO differentiate form for type of properties (images, arrays, radios,...)
 //TODO create generic testing for client and server through jest/react-testing-library
 
 function App() {
