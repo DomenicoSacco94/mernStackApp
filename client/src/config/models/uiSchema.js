@@ -15,7 +15,7 @@ export const uiSchema = {
     "ui:readonly": true,
   },
   lastModified: {
-    "ui:title": "Last Modified Date",
+    "ui:title": "Last Modified on",
     "ui:widget": "lastModified",
   },
 };

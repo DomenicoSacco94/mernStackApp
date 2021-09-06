@@ -17,8 +17,11 @@ const Edit = () => {
   const [currentData, setCurrentData] = useState(null);
 
   let LastModified = (props) => {
-    console.log("props");
-    return <div> {props.value} </div>;
+    return props.value ? (
+      <div> {new Date(props.value).toString("dddd, MMMM ,yyyy")} </div>
+    ) : (
+      " N/A (new Item)"
+    );
   };
 
   useEffect(() => {
@@ -42,8 +45,6 @@ const Edit = () => {
           history.push("/");
         });
   };
-
-  console.log(currentData);
 
   return (
     <JSONSchemaForm

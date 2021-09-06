@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import RecordList from "./components/recordList";
 import { Navbar } from "./components/navbar";
 import EditSchema from "./components/edit";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 import "./App.css";
 
+//TODO create custom component for file upload
 //TODO repackage to each docker container
 //TODO add proper logging
 //TODO adapt for more entities
