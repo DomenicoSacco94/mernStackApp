@@ -9,7 +9,7 @@ export const Navbar = () => {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/createSchema">{`Create new ${recordName}`}</a>
+          <a href="/new">{`Create new ${recordName}`}</a>
         </li>
       </ul>
     </nav>

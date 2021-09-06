@@ -9,7 +9,7 @@ const Record = (props) => (
       <td key={property}>{props.record[property]}</td>
     ))}
     <td>
-      <Link to={"/editSchema/" + props.record._id}>Edit</Link> |
+      <Link to={"/edit/" + props.record._id}>Edit</Link> |
       <a
         href="/"
         onClick={() => {

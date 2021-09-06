@@ -5,10 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import RecordList from "./components/recordList";
 import "./App.css";
 import { Navbar } from "./components/navbar";
-import CreateSchema from "./components/createSchema";
-import EditSchema from "./components/editSchema";
+import EditSchema from "./components/edit";
 
-//TODO merge create and save components
 //TODO enter json:ui
 //TODO repackage to each docker container
 //TODO adapt for more entities
@@ -23,8 +21,8 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={RecordList} />
-          <Route path="/createSchema" component={CreateSchema} />
-          <Route path="/editSchema/:id" component={EditSchema} />
+          <Route path="/new" component={EditSchema} />
+          <Route path="/edit/:id" component={EditSchema} />
         </Switch>
       </Router>
     </div>
