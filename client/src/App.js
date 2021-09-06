@@ -7,11 +7,10 @@ import "./App.css";
 import { Navbar } from "./components/navbar";
 import EditSchema from "./components/edit";
 
-//TODO enter json:ui
 //TODO repackage to each docker container
-//TODO adapt for more entities
 //TODO fix creation and editing UI styles through ant design
 //TODO add proper logging
+//TODO adapt for more entities
 //TODO create generic testing for client and server through jest/react-testing-library
 
 function App() {

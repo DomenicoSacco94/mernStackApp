@@ -8,6 +8,7 @@ import {
   retrieveRecord,
   updateRecord,
 } from "../services/recordService";
+import { uiSchema } from "../config/models/uiSchema";
 
 const Edit = () => {
   const history = useHistory();
@@ -15,15 +16,24 @@ const Edit = () => {
   const { pathname } = useLocation();
   const [currentData, setCurrentData] = useState(null);
 
+  let LastModified = (props) => {
+    console.log("props");
+    return <div> {props.value} </div>;
+  };
+
   useEffect(() => {
     !pathname.includes("new") &&
       retrieveRecord(id).then((response) => {
-        console.log(response);
         setCurrentData(response?.data ? response.data : { error: true });
       });
   }, [id, pathname]);
 
   const onSubmit = (form) => {
+    form.formData = {
+      ...form.formData,
+      lastModified: new Date().toISOString(),
+    };
+
     pathname.includes("new")
       ? createRecord(form.formData).then((res) => {
           history.push("/");
@@ -40,6 +50,8 @@ const Edit = () => {
       formData={currentData}
       onSubmit={onSubmit}
       schema={dataSchema}
+      uiSchema={uiSchema}
+      widgets={{ lastModified: LastModified }}
     />
   );
 };

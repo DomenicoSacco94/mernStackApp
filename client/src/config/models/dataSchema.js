@@ -2,7 +2,6 @@ var dataSchema = {
   type: "object",
   properties: {
     title: {
-      title: "Title",
       type: "string",
       minLength: 10,
       maxLength: 140,
@@ -12,17 +11,18 @@ var dataSchema = {
       type: "string",
     },
     published: {
-      title: "Creation Date",
       type: "string",
       format: "date-time",
+      default: new Date().toISOString(),
     },
-    modified: {
-      title: "Modification date",
+    creation: {
       type: "string",
       format: "date-time",
+      default: new Date().toISOString(),
     },
+    lastModified: { type: "string" },
   },
-  required: ["title", "content", "published", "modified"],
+  required: ["title", "content", "published", "creation"],
 };
 
 exports.dataSchema = dataSchema;
